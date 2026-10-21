@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Component({
+    standalone: false,
     selector: 'app-create-slave',
     templateUrl: './create-auth.component.html',
     styleUrls: ['./create-auth.component.scss']
