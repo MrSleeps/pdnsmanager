@@ -7,7 +7,7 @@ import { SoaApitype } from './../../apitypes/Soa.apitype';
 import { DomainsOperation } from './../../operations/domains.operations';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PagingApitype } from '../../apitypes/Paging.apitype';
 import { SortEventDatatype } from '../../datatypes/sort-event.datatype';
 import { debounceTime, filter } from 'rxjs/operators';
@@ -40,12 +40,15 @@ export class EditAuthComponent implements OnInit {
     public typeFilter: FormControl;
 
     constructor(private route: ActivatedRoute, private fb: FormBuilder, public gs: StateService,
-        private domains: DomainsOperation, private records: RecordsOperation) { }
+        private domains: DomainsOperation, private records: RecordsOperation, private cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.createForm();
 
-        this.route.data.subscribe((data) => this.type = data.type);
+        this.route.data.subscribe((data) => {
+            this.type = data.type;
+            this.cdr.markForCheck();
+        });
 
         this.route.paramMap.subscribe((params) => this.initControl(params));
     }
@@ -55,6 +58,7 @@ export class EditAuthComponent implements OnInit {
 
         this.domains.getSingle(this.domainId).then((domain: DomainApitype) => {
             this.domain = domain;
+            this.cdr.markForCheck();
         });
 
         this.domains.getSoa(this.domainId).then((soa: SoaApitype) => {
@@ -67,6 +71,7 @@ export class EditAuthComponent implements OnInit {
                 ttl: soa.ttl,
                 serial: soa.serial
             });
+            this.cdr.markForCheck();
         });
 
         this.queryNameInput.reset();
@@ -126,6 +131,7 @@ export class EditAuthComponent implements OnInit {
         } else {
             this.pagingInfo = res.paging;
             this.recordList = res.results;
+            this.cdr.markForCheck();
         }
     }
 
