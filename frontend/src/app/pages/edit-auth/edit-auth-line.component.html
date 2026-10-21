@@ -5,9 +5,7 @@
     <div class="text-nowrap text-truncate" *ngIf="!editMode">{{ fullName() }}</div>
     <div class="input-group input-group-sm" *ngIf="editMode">
         <input class="form-control" type="text" [formControl]="inputName">
-        <div class="input-group-text">
-            <span class="input-group-text">{{ domainPart() }}</span>
-        </div>
+        <span class="input-group-text">{{ domainPart() }}</span>
     </div>
 </td>
 <td class="align-middle py-0">
