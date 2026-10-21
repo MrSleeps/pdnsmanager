@@ -12,13 +12,13 @@ class Database
 
         try {
             $pdo = new \PDO(
-                'mysql:host=' . $config['host'] . ';port=' . $config['port'] . ';dbname=' . $config['dbname'],
+                'mysql:host=' . $config['host'] . ';port=' . $config['port'] . ';dbname=' . $config['dbname'] . ';charset=utf8mb4',
                 $config['user'],
                 $config['password']
             );
         } catch (\PDOException $e) {
             $c->logger->critical("SQL Connect Error: " . $e->getMessage());
-            $c->logger->critical("DB Config was", $config);
+            // Never log database credentials.
             exit();
         }
 

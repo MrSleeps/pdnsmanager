@@ -2,8 +2,6 @@
 
 namespace Operations;
 
-use function Monolog\Handler\error_log;
-
 require '../vendor/autoload.php';
 
 /**
@@ -86,7 +84,7 @@ class Records
             $query->execute();
             $record = $query->fetch();
 
-            $pi->totalPages = ceil($record['total'] / $pi->pageSize);
+            $pi->totalPages = (int) ceil($record['total'] / $pi->pageSize);
         }
 
         //Query and return result
@@ -299,7 +297,8 @@ class Records
             throw new \Exceptions\NotFoundException();
         }
 
-        if ($type !== null && !in_array($type, $this->c['config']['records']['allowedTypes'])) {
+        if ($type !== null && !in_array($type, $this->c['config']['records']['allowedTypes'], true)) {
+            $this->db->rollBack();
             throw new \Exceptions\SemanticException();
         }
 
@@ -312,7 +311,7 @@ class Records
         $ttl = $ttl === null ? intval($record['ttl']) : $ttl;
 
         $query = $this->db->prepare('UPDATE records SET name=:name,type=:type,content=:content,prio=:priority,ttl=:ttl WHERE id=:recordId');
-        $query->bindValue('recordId', $recordId);
+        $query->bindValue(':recordId', $recordId, \PDO::PARAM_INT);
         $query->bindValue(':name', $name);
         $query->bindValue(':type', $type);
         $query->bindValue(':content', $content);

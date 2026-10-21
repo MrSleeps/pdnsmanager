@@ -41,10 +41,10 @@ $defaultConfig = [
     'dbVersion' => 7
 ];
 
-if (file_exists('../config/ConfigOverride.php')) {
-    $userConfig = require('ConfigOverride.php');
-} elseif (file_exists('../config/ConfigUser.php')) {
-    $userConfig = require('ConfigUser.php');
+if (file_exists(__DIR__ . '/ConfigOverride.php')) {
+    $userConfig = require(__DIR__ . '/ConfigOverride.php');
+} elseif (file_exists(__DIR__ . '/ConfigUser.php')) {
+    $userConfig = require(__DIR__ . '/ConfigUser.php');
 } else {
     return false;
 }

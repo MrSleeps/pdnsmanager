@@ -67,7 +67,7 @@ class Domains
             $query->execute();
             $record = $query->fetch();
 
-            $pi->totalPages = ceil($record['total'] / $pi->pageSize);
+            $pi->totalPages = (int) ceil($record['total'] / $pi->pageSize);
         }
         
         //Query and return result

@@ -1,0 +1,29 @@
+name: PHP 8.5 compatibility
+on:
+  push:
+    branches: [compat/php-8-5]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mbstring, pdo_mysql, openssl, apcu
+          coverage: none
+          tools: composer:v2
+      - name: Resolve PHP 8.5 dependencies
+        working-directory: backend/src
+        run: composer update --no-interaction --prefer-dist --with-all-dependencies
+      - name: Validate dependencies
+        working-directory: backend/src
+        run: |
+          composer validate --no-check-publish
+          composer check-platform-reqs
+      - name: Syntax check backend
+        run: |
+          find backend/src -type f -name '*.php' ! -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
