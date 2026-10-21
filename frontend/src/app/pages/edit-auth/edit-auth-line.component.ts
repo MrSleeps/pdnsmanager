@@ -96,9 +96,17 @@ export class EditAuthLineComponent implements OnInit, OnChanges {
                 acceptClass: 'danger'
             }));
 
-            await this.records.delete(this.entry.id);
-
-            this.recordDeleted.emit(this.entry.id);
+            if (await this.records.delete(this.entry.id)) {
+                this.recordDeleted.emit(this.entry.id);
+            } else {
+                await this.modal.showMessage(new ModalOptionsDatatype({
+                    heading: 'Deletion failed',
+                    body: 'The DNS record could not be deleted. Please check the server logs and try again.',
+                    acceptText: 'OK',
+                    dismisText: '',
+                    acceptClass: 'warning'
+                }));
+            }
         } catch (e) {
         }
     }
