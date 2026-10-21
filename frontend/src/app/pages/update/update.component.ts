@@ -7,6 +7,7 @@ import { OnInit, Component } from '@angular/core';
 import { isString } from 'util';
 
 @Component({
+    standalone: false,
     selector: 'app-update',
     templateUrl: './update.component.html',
     styleUrls: ['./update.component.scss']
