@@ -75,6 +75,13 @@ export class StateService {
     }
 
     private loadLocalStorage() {
-        Object.assign(this, JSON.parse(localStorage.getItem('pdnsmanagerstate')));
+        const saved = localStorage.getItem('pdnsmanagerstate');
+        if (saved) {
+            try {
+                Object.assign(this, JSON.parse(saved));
+            } catch (_) {
+                localStorage.removeItem('pdnsmanagerstate');
+            }
+        }
     }
 }
