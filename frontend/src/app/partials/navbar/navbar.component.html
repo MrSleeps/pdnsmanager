@@ -8,7 +8,7 @@
         </button>
 
         <div class="navbar-collapse" [class.collapse]="!open">
-            <ul #navbarEntries class="navbar-nav mr-auto">
+            <ul #navbarEntries class="navbar-nav me-auto">
                 <ng-content select="app-navbar-entry:not([right])"></ng-content>
             </ul>
             <ul #navbarEntriesRight class="navbar-nav">
