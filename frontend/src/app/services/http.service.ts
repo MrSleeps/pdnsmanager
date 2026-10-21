@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import { AxiosInstance, AxiosError, RawAxiosRequestHeaders } from 'axios';
 import axios from 'axios';
 import { StateService } from './state.service';
 import { ModalService } from './modal.service';
@@ -96,12 +96,13 @@ export class HttpService {
         }
     }
 
-    private buildHeaders(): Object {
-        if (this.gs.apiToken !== null) {
+    private buildHeaders(): RawAxiosRequestHeaders {
+        if (this.gs.apiToken) {
             return {
                 'X-Authentication': this.gs.apiToken
             };
         }
+        return {};
     }
 
     private makeUrl(url: string | Array<string>): string {
@@ -112,10 +113,14 @@ export class HttpService {
         }
     }
 
-    private async handleException(e: AxiosError) {
+    private async handleException(e: unknown) {
+        if (!axios.isAxiosError(e)) {
+            return false;
+        }
+        const responseData = e.response?.data;
         if (e.response && e.response.status === 403 &&
-            e.response.data.hasOwnProperty('code') &&
-            e.response.data.code === 'invalid_session') {
+            responseData && typeof responseData === 'object' &&
+            responseData.code === 'invalid_session') {
 
             await this.modal.showMessage(new ModalOptionsDatatype({
                 heading: 'Session expired!',
