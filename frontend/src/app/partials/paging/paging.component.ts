@@ -2,6 +2,7 @@ import { PagingApitype } from './../../apitypes/Paging.apitype';
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'app-paging',
     templateUrl: './paging.component.html',
     styleUrls: ['./paging.component.scss']
