@@ -13,6 +13,7 @@ import { SortEventDatatype } from '../../datatypes/sort-event.datatype';
 import 'rxjs/add/operator/filter';
 
 @Component({
+    standalone: false,
     selector: 'app-edit-auth',
     templateUrl: './edit-auth.component.html',
     styleUrls: ['./edit-auth.component.scss']
