@@ -3,6 +3,7 @@ import { ModalService } from '../../services/modal.service';
 import { ModalOptionsDatatype } from '../../datatypes/modal-options.datatype';
 
 @Component({
+    standalone: false,
     selector: 'app-modal-container',
     templateUrl: './modal-container.component.html',
     styleUrls: ['./modal-container.component.scss']
