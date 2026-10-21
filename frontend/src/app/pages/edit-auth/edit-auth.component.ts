@@ -10,7 +10,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PagingApitype } from '../../apitypes/Paging.apitype';
 import { SortEventDatatype } from '../../datatypes/sort-event.datatype';
-import 'rxjs/add/operator/filter';
+import { debounceTime, filter } from 'rxjs/operators';
 
 @Component({
     standalone: false,
@@ -95,10 +95,10 @@ export class EditAuthComponent implements OnInit {
         });
 
         this.queryNameInput = new FormControl('');
-        this.queryNameInput.valueChanges.filter((d) => d !== null).debounceTime(500).subscribe(() => this.loadRecords());
+        this.queryNameInput.valueChanges.pipe(filter((d) => d !== null), debounceTime(500)).subscribe(() => this.loadRecords());
 
         this.queryContentInput = new FormControl('');
-        this.queryContentInput.valueChanges.filter((d) => d !== null).debounceTime(500).subscribe(() => this.loadRecords());
+        this.queryContentInput.valueChanges.pipe(filter((d) => d !== null), debounceTime(500)).subscribe(() => this.loadRecords());
 
         this.typeFilter = new FormControl(null);
         this.typeFilter.valueChanges.subscribe(() => this.loadRecords());
