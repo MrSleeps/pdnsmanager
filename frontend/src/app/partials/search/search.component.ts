@@ -3,6 +3,7 @@ import { SearchService, SearchServiceResult } from './../../utils/search-service
 import { Component, OnInit, Input, forwardRef, EventEmitter, Output } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
