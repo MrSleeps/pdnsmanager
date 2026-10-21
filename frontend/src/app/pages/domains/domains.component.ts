@@ -5,7 +5,7 @@ import { StateService } from './../../services/state.service';
 import { DomainApitype } from './../../apitypes/Domain.apitype';
 import { PagingApitype } from './../../apitypes/Paging.apitype';
 import { DomainsOperation } from './../../operations/domains.operations';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
@@ -31,7 +31,7 @@ export class DomainsComponent implements OnInit {
     public typeFilter: FormControl;
     public typeFilterOptions = ['MASTER', 'NATIVE', 'SLAVE'];
 
-    constructor(private domains: DomainsOperation, public gs: StateService, private modal: ModalService, private router: Router) { }
+    constructor(private domains: DomainsOperation, public gs: StateService, private modal: ModalService, private router: Router, private cdr: ChangeDetectorRef) { }
 
     public ngOnInit() {
         this.searchInput = new FormControl('');
@@ -56,6 +56,7 @@ export class DomainsComponent implements OnInit {
         } else {
             this.pagingInfo = res.paging;
             this.domainList = res.results;
+            this.cdr.markForCheck();
         }
     }
 
