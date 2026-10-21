@@ -4,11 +4,6 @@ import { DomainsOperation } from './../../operations/domains.operations';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Component({
     standalone: false,
