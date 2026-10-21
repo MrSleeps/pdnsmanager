@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-12">
-        <p class="font-weight-bold">Install PDNS Manager</p>
+        <p class="fw-bold">Install PDNS Manager</p>
     </div>
 </div>
 <form autocomplete="off" [formGroup]="setupForm" (ngSubmit)="onSubmit()">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3" formGroupName="db">
-            <p class="font-weight-bold">Database</p>
+            <p class="fw-bold">Database</p>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Host</label>
                 <input type="text" class="form-control auto-invalid" formControlName="host" />
                 <div class="invalid-feedback">
@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>User</label>
                 <input type="text" class="form-control auto-invalid" formControlName="user" />
                 <div class="invalid-feedback">
@@ -24,12 +24,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Password</label>
                 <input type="password" class="form-control auto-invalid" formControlName="password" />
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Database</label>
                 <input type="text" class="form-control auto-invalid" formControlName="database" />
                 <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Port</label>
                 <input type="text" class="form-control auto-invalid" formControlName="port" />
                 <div class="invalid-feedback">
@@ -47,9 +47,9 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3 offset-lg-1" formGroupName="admin">
-            <p class="font-weight-bold">Initial admin user</p>
+            <p class="fw-bold">Initial admin user</p>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Username</label>
                 <input type="text" class="form-control auto-invalid" formControlName="name" />
                 <div class="invalid-feedback">
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Password</label>
                 <input type="password" class="form-control auto-validstate" formControlName="password" />
                 <div class="invalid-feedback">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Repeat password</label>
                 <input type="password" class="form-control auto-validstate" formControlName="password2" />
                 <div class="invalid-feedback">
@@ -82,8 +82,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <button type="submit" class="btn btn-primary float-right float-md-left" [disabled]="!setupForm.valid || setupForm.pristine">Setup</button>
-            <app-fa-icon class="ml-3" icon="spinner" size=2 animate="pulse" [hidden]="!loading"></app-fa-icon>
+            <button type="submit" class="btn btn-primary float-end float-md-left" [disabled]="!setupForm.valid || setupForm.pristine">Setup</button>
+            <app-fa-icon class="ms-3" icon="spinner" size=2 animate="pulse" [hidden]="!loading"></app-fa-icon>
         </div>
     </div>
 </form>
