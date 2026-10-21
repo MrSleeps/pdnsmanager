@@ -13,7 +13,7 @@ class Logger
         $logger = new \Monolog\Logger('pdnsmanager');
 
         $loglevel = \Monolog\Logger::toMonologLevel($config['level']);
-        $path = $config['path'];
+        $path = $config['path'] ?? '';
 
         if (\strlen($path) > 0) {
             $fileHandler = new \Monolog\Handler\StreamHandler($path, $loglevel);
