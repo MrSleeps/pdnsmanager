@@ -9,6 +9,7 @@ import { RecordApitype } from './../../apitypes/Record.apitype';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
+    standalone: false,
     // tslint:disable-next-line:component-selector
     selector: '[app-edit-auth-line]',
     templateUrl: './edit-auth-line.component.html'
