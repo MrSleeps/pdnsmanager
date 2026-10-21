@@ -5,6 +5,7 @@ import { StateService } from './services/state.service';
 import { SessionOperation } from './operations/session.operation';
 
 @Component({
+    standalone: false,
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
