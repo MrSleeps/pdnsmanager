@@ -4,7 +4,6 @@ import { PasswordValidationUtil } from './../../utils/password-validation.util';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { OnInit, Component } from '@angular/core';
-import { isString } from 'util';
 
 @Component({
     standalone: false,
