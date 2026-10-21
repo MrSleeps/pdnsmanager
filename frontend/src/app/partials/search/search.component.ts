@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { SearchService, SearchServiceResult } from './../../utils/search-service.interface';
 import { Component, OnInit, Input, forwardRef, EventEmitter, Output } from '@angular/core';
 
@@ -26,7 +27,7 @@ export class SearchComponent implements OnInit {
 
     ngOnInit() {
         this.inputControl = new FormControl('');
-        this.inputControl.valueChanges.debounceTime(500).subscribe(() => this.reloadResults());
+        this.inputControl.valueChanges.pipe(debounceTime(500)).subscribe(() => this.reloadResults());
     }
 
     public async reloadResults() {
