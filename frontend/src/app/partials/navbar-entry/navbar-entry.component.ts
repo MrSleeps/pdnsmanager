@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'app-navbar-entry',
     templateUrl: './navbar-entry.component.html',
     styleUrls: ['./navbar-entry.component.scss']
