@@ -37,7 +37,7 @@ $sizes: (
   300: 300%
 );
 
-@import '~bootstrap/scss/bootstrap.scss';
+@import 'bootstrap/scss/bootstrap';
 
 .dropdown-item-hover {
     @extend .dropdown-item:hover;
@@ -50,8 +50,8 @@ $sizes: (
   }
 
 /* Add font awesome */
-$fa-font-path: "~font-awesome/fonts";
-@import '~font-awesome/scss/font-awesome';
+$fa-font-path: 'font-awesome/fonts';
+@import 'font-awesome/scss/font-awesome';
 
 /* Custom global rules */
 .no-shadow {
@@ -100,7 +100,7 @@ $fa-font-path: "~font-awesome/fonts";
 }
 
 /* Make table wider for small screens */
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
     .table-triple {
         min-width: 100%;
         max-width: 300%;
