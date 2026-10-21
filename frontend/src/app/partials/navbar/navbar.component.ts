@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']

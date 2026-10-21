@@ -17,14 +17,14 @@
                             <app-sort field="id" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                         </th>
                         <th class="align-middle">
-                            <div class="form-inline">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span>Name</span>
                                 <app-sort field="name" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                                 <input class="form-control form-control-sm no-shadow" type="text" placeholder="Search" [formControl]="searchInput">
                             </div>
                         </th>
                         <th class="w-20 align-middle">
-                            <div class="form-inline">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span>Type</span>
                                 <app-sort field="type" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                                 <app-select [options]="typeFilterOptions" [formControl]="typeFilter"></app-select>

@@ -9,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
-import 'rxjs/add/operator/debounceTime';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
+    standalone: false,
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss']
@@ -34,7 +35,7 @@ export class UsersComponent implements OnInit {
 
     public ngOnInit() {
         this.searchInput = new FormControl('');
-        this.searchInput.valueChanges.debounceTime(500).subscribe(() => this.loadData());
+        this.searchInput.valueChanges.pipe(debounceTime(500)).subscribe(() => this.loadData());
 
         this.typeFilter = new FormControl(null);
         this.typeFilter.valueChanges.subscribe(() => this.loadData());

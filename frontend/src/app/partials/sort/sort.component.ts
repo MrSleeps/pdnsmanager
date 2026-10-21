@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SortEventDatatype } from '../../datatypes/sort-event.datatype';
 
 @Component({
+    standalone: false,
     selector: 'app-sort',
     templateUrl: './sort.component.html',
     styleUrls: ['./sort.component.scss']

@@ -7,6 +7,7 @@ import { ModalOptionsDatatype } from '../../datatypes/modal-options.datatype';
 import { PasswordValidationUtil } from '../../utils/password-validation.util';
 
 @Component({
+    standalone: false,
     selector: 'app-create-user',
     templateUrl: './create-user.component.html',
     styleUrls: ['./create-user.component.scss']

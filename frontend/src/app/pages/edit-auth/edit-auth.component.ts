@@ -7,12 +7,13 @@ import { SoaApitype } from './../../apitypes/Soa.apitype';
 import { DomainsOperation } from './../../operations/domains.operations';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PagingApitype } from '../../apitypes/Paging.apitype';
 import { SortEventDatatype } from '../../datatypes/sort-event.datatype';
-import 'rxjs/add/operator/filter';
+import { debounceTime, filter } from 'rxjs/operators';
 
 @Component({
+    standalone: false,
     selector: 'app-edit-auth',
     templateUrl: './edit-auth.component.html',
     styleUrls: ['./edit-auth.component.scss']
@@ -39,12 +40,15 @@ export class EditAuthComponent implements OnInit {
     public typeFilter: FormControl;
 
     constructor(private route: ActivatedRoute, private fb: FormBuilder, public gs: StateService,
-        private domains: DomainsOperation, private records: RecordsOperation) { }
+        private domains: DomainsOperation, private records: RecordsOperation, private cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.createForm();
 
-        this.route.data.subscribe((data) => this.type = data.type);
+        this.route.data.subscribe((data) => {
+            this.type = data.type;
+            this.cdr.markForCheck();
+        });
 
         this.route.paramMap.subscribe((params) => this.initControl(params));
     }
@@ -54,6 +58,7 @@ export class EditAuthComponent implements OnInit {
 
         this.domains.getSingle(this.domainId).then((domain: DomainApitype) => {
             this.domain = domain;
+            this.cdr.markForCheck();
         });
 
         this.domains.getSoa(this.domainId).then((soa: SoaApitype) => {
@@ -66,6 +71,7 @@ export class EditAuthComponent implements OnInit {
                 ttl: soa.ttl,
                 serial: soa.serial
             });
+            this.cdr.markForCheck();
         });
 
         this.queryNameInput.reset();
@@ -94,10 +100,10 @@ export class EditAuthComponent implements OnInit {
         });
 
         this.queryNameInput = new FormControl('');
-        this.queryNameInput.valueChanges.filter((d) => d !== null).debounceTime(500).subscribe(() => this.loadRecords());
+        this.queryNameInput.valueChanges.pipe(filter((d) => d !== null), debounceTime(500)).subscribe(() => this.loadRecords());
 
         this.queryContentInput = new FormControl('');
-        this.queryContentInput.valueChanges.filter((d) => d !== null).debounceTime(500).subscribe(() => this.loadRecords());
+        this.queryContentInput.valueChanges.pipe(filter((d) => d !== null), debounceTime(500)).subscribe(() => this.loadRecords());
 
         this.typeFilter = new FormControl(null);
         this.typeFilter.valueChanges.subscribe(() => this.loadRecords());
@@ -125,6 +131,7 @@ export class EditAuthComponent implements OnInit {
         } else {
             this.pagingInfo = res.paging;
             this.recordList = res.results;
+            this.cdr.markForCheck();
         }
     }
 

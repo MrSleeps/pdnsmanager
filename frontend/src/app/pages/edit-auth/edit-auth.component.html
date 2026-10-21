@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-12">
-        <p class="font-weight-bold">Update SOA data for {{ domain.name }}</p>
+        <p class="fw-bold">Update SOA data for {{ domain.name }}</p>
     </div>
 </div>
 <form [formGroup]="soaForm" (submit)="onSoaSubmit()">
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Primary</label>
                 <input type="text" class="form-control auto-invalid" formControlName="primary" />
                 <div class="invalid-feedback">
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Email</label>
                 <input type="text" class="form-control auto-invalid" formControlName="email" />
                 <div class="invalid-feedback">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="col-12 col-md-3 col-lg-2 offset-lg-1">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Refresh</label>
                 <input type="text" class="form-control auto-invalid" formControlName="refresh" />
                 <div class="invalid-feedback">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Retry</label>
                 <input type="text" class="form-control auto-invalid" formControlName="retry" />
                 <div class="invalid-feedback">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="col-12 col-md-3 col-lg-2 offset-lg-1">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Expire</label>
                 <input type="text" class="form-control auto-invalid" formControlName="expire" />
                 <div class="invalid-feedback">
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>TTL</label>
                 <input type="text" class="form-control auto-invalid" formControlName="ttl" />
                 <div class="invalid-feedback">
@@ -57,14 +57,14 @@
             </div>
         </div>
         <div class="col-12 col-md-2 col-lg-2 offset-lg-1">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Serial</label>
                 <input type="text" class="form-control auto-invalid" readonly formControlName="serial" />
             </div>
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary float-right float-md-left" [disabled]="!soaForm.valid || soaForm.pristine">Save</button>
+            <button type="submit" class="btn btn-primary float-end float-md-left" [disabled]="!soaForm.valid || soaForm.pristine">Save</button>
         </div>
     </div>
 </form>
@@ -84,21 +84,21 @@
                             <app-sort field="id" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                         </th>
                         <th class="w-25 align-middle">
-                            <div class="form-inline">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span>Name</span>
                                 <app-sort field="name" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                                 <input class="form-control form-control-sm no-shadow" type="text" placeholder="Search" [formControl]="queryNameInput">
                             </div>
                         </th>
                         <th class="w-15 align-middle">
-                            <div class="form-inline">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span>Type</span>
                                 <app-sort field="type" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                                 <app-select class="w-60" [options]="gs.recordTypes" [formControl]="typeFilter" multiple></app-select>
                             </div>
                         </th>
                         <th class="align-middle">
-                            <div class="form-inline">
+                            <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span>Content</span>
                                 <app-sort field="content" [activeFields]="sortField" (sort)="onSortEvent($event)"></app-sort>
                                 <input class="form-control form-control-sm no-shadow" type="text" placeholder="Search" [formControl]="queryContentInput">

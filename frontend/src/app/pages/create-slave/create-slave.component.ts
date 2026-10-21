@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalOptionsDatatype } from '../../datatypes/modal-options.datatype';
 
 @Component({
+    standalone: false,
     selector: 'app-create-slave',
     templateUrl: './create-slave.component.html',
     styleUrls: ['./create-slave.component.scss']

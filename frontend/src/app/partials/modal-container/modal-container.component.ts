@@ -3,6 +3,7 @@ import { ModalService } from '../../services/modal.service';
 import { ModalOptionsDatatype } from '../../datatypes/modal-options.datatype';
 
 @Component({
+    standalone: false,
     selector: 'app-modal-container',
     templateUrl: './modal-container.component.html',
     styleUrls: ['./modal-container.component.scss']
@@ -44,7 +45,7 @@ export class ModalContainerComponent implements OnInit {
         this.show = true;
         window.setTimeout(() => this.animate = true, 50);
 
-        window.setTimeout(() => this.acceptButton.nativeElement.focus(), 50);
+        window.setTimeout(() => this.acceptButton?.nativeElement.focus(), 50);
 
         return new Promise<void>((resolve, reject) => {
             this.currentResolve = resolve;
@@ -57,7 +58,7 @@ export class ModalContainerComponent implements OnInit {
      */
     hideModal() {
         this.animate = false;
-        window.setTimeout(() => this.show = false, 50);
+        window.setTimeout(() => this.show = false, 150);
     }
 
     /**

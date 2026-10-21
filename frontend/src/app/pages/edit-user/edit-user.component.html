@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-12 col-md-4 col-lg-3">
-        <p class="font-weight-bold">Edit user {{ username }}</p>
+        <p class="fw-bold">Edit user {{ username }}</p>
 
         <form autocomplete="off" [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-            <div class="form-group" *ngIf="isNative">
+            <div class="mb-3" *ngIf="isNative">
                 <label>Name</label>
                 <input type="text" class="form-control auto-invalid" formControlName="name" />
                 <div class="invalid-feedback">
@@ -12,13 +12,13 @@
                 </div>
             </div>
 
-            <div class="form-group" *ngIf="isNative">
+            <div class="mb-3" *ngIf="isNative">
                 <label>Password</label>
                 <input type="password" class="form-control auto-valid" formControlName="password" placeholder="(unchanged)"
                 />
             </div>
 
-            <div class="form-group" *ngIf="isNative">
+            <div class="mb-3" *ngIf="isNative">
                 <label>Repeat password</label>
                 <input type="password" class="form-control auto-validstate" formControlName="password2" placeholder="(unchanged)"
                 />
@@ -27,25 +27,25 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Type</label>
                 <app-select [options]="['user', 'admin']" notNull formControlName="type"></app-select>
             </div>
 
-            <button type="submit" class="btn btn-primary float-right" [disabled]="!userForm.valid || userForm.pristine">Save</button>
+            <button type="submit" class="btn btn-primary float-end" [disabled]="!userForm.valid || userForm.pristine">Save</button>
         </form>
     </div>
     <div class="col-12 col-md-8 col-lg-8 offset-lg-1">
-        <div class="row no-gutters">
+        <div class="row g-0">
             <div class="col-12 col-md-8 col-lg-4">
-                <p class="font-weight-bold">Add permission for domain</p>
+                <p class="fw-bold">Add permission for domain</p>
                 <app-search (resultClicked)="addPermissionFor($event)" [searchService]="domains"></app-search>
             </div>
         </div>
 
-        <div class="row no-gutters mt-3">
+        <div class="row g-0 mt-3">
             <div class="col-12 col-lg-8">
-                <p class="font-weight-bold">Manage existing permissions</p>
+                <p class="fw-bold">Manage existing permissions</p>
                 <app-pagesize class="float-md-right" [pagesizes]="gs.pageSizes" [currentPagesize]="gs.pageSize" (pagesizeChange)="onPagesizeChange($event)"></app-pagesize>
                 <table class="table table-hover">
                     <tbody>

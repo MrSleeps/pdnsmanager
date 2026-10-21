@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+    standalone: false,
     selector: 'app-edit-slave',
     templateUrl: './edit-slave.component.html',
     styleUrls: ['./edit-slave.component.scss']

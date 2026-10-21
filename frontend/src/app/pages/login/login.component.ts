@@ -6,6 +6,7 @@ import { HttpService } from '../../services/http.service';
 import { SessionOperation } from '../../operations/session.operation';
 
 @Component({
+    standalone: false,
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']

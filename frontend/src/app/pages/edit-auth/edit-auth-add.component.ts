@@ -6,6 +6,7 @@ import { RecordApitype } from './../../apitypes/Record.apitype';
 import { Component, OnInit, Input, SimpleChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
+    standalone: false,
     // tslint:disable-next-line:component-selector
     selector: '[app-edit-auth-add]',
     templateUrl: './edit-auth-add.component.html'

@@ -12,6 +12,7 @@ import { ModalOptionsDatatype } from '../../datatypes/modal-options.datatype';
 import { PasswordValidationUtil } from '../../utils/password-validation.util';
 
 @Component({
+    standalone: false,
     selector: 'app-edit-credentials',
     templateUrl: './edit-credentials.component.html',
     styleUrls: ['./edit-credentials.component.scss']

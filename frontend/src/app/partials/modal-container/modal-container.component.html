@@ -1,18 +1,17 @@
-<div class="modal fade" [class.show]="animate" [class.in]="animate" [hidden]="!show" (click)="onDismis()">
-    <div class="modal-dialog" role="document">
+<div *ngIf="show" class="modal fade" [class.show]="animate" role="dialog" aria-modal="true" aria-labelledby="confirmation-modal-title" (click)="onDismis()">
+    <div class="modal-dialog" role="document" (click)="$event.stopPropagation()">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{options.heading}}</h5>
+                <h5 id="confirmation-modal-title" class="modal-title">{{options.heading}}</h5>
             </div>
             <div class="modal-body">
                 <p>{{options.body}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" *ngIf="options.dismisText.length > 0" class="btn btn-secondary" (click)="onDismis()">{{options.dismisText}}</button>
-                <button type="button" #acceptButton class="btn" [ngClass]="'btn-' + options.acceptClass" (click)="onAccept()"
-                    appFocus>{{options.acceptText}}</button>
+                <button type="button" #acceptButton class="btn" [ngClass]="'btn-' + options.acceptClass" (click)="onAccept()">{{options.acceptText}}</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal-backdrop fade" [hidden]="!show" [class.show]="animate" [class.in]="animate"></div>
+<div *ngIf="show" class="modal-backdrop fade" [class.show]="animate"></div>
