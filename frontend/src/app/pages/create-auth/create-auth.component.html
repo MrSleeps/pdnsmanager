@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-12">
-        <p class="font-weight-bold">Create {{ type | lowercase }} zone</p>
+        <p class="fw-bold">Create {{ type | lowercase }} zone</p>
     </div>
 </div>
 <form autocomplete="off" [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Name</label>
                 <input type="text" class="form-control auto-invalid" formControlName="name" />
                 <div class="invalid-feedback">
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Primary</label>
                 <input type="text" class="form-control auto-invalid" formControlName="primary" />
                 <div class="invalid-feedback">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Email</label>
                 <input type="text" class="form-control auto-invalid" formControlName="email" />
                 <div class="invalid-feedback">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-12 col-md-3 col-lg-2 offset-lg-1">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Refresh</label>
                 <input type="text" class="form-control auto-invalid" formControlName="refresh" />
                 <div class="invalid-feedback">
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Retry</label>
                 <input type="text" class="form-control auto-invalid" formControlName="retry" />
                 <div class="invalid-feedback">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-12 col-md-3 col-lg-2 offset-lg-1">
-            <div class="form-group">
+            <div class="mb-3">
                 <label>Expire</label>
                 <input type="text" class="form-control auto-invalid" formControlName="expire" />
                 <div class="invalid-feedback">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label>TTL</label>
                 <input type="text" class="form-control auto-invalid" formControlName="ttl" />
                 <div class="invalid-feedback">
@@ -69,7 +69,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <button type="submit" class="btn btn-primary float-right float-md-left" [disabled]="!authForm.valid || authForm.pristine">Save</button>
+            <button type="submit" class="btn btn-primary float-end float-md-left" [disabled]="!authForm.valid || authForm.pristine">Save</button>
         </div>
     </div>
 </form>
